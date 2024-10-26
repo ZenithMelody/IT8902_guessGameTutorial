@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Number Game</title>
+    <script>
+
+        let secretNumber = Math.floor((Math.random() * 100) + 1);
+        //alert(secretNumber);
+
+        let guess = "";
+        let tries = 0;
+        let clue = "";
+
+        do{
+            tries++;
+            guess = parseInt(prompt(`${clue}Pls enter your guess (1 to 100) or 0 to quit.`));
+
+            if(isNaN(guess) || guess < 1 || guess > 100){ // invalid input 
+                if(guess == 0){
+                    break;
+                }
+                clue = "Invalid inout, pls try again.\n";
+                tries--;
+            } 
+            
+            else if(guess > secretNumber){ // too high
+                clue = "too high.\n";
+            }
+
+            else if(guess < secretNumber){ // too low
+                clue = "too low.\n";
+            }
+
+            else{ // correct
+                alert(`You are right. You took ${tries} ${(tries > 1) ? "tries" : "try"}`);
+            }
+
+        }while(guess != secretNumber);
+        alert("Thank you for playing. Goodbye.");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
